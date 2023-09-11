@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Sistema de Inventario Configuroweb</title>
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/cerulean.theme.min.css">
+    <link href="css/estilo.css" rel="stylesheet">
+
+
+  </head>
+  <body>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-2">
+          <h1 class="my-4"></h1>
+              <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="prod" data-toggle="pill" role="tab" aria-controls="v-pills-item" aria-selected="true">Producto</a>
+                <a class="nav-link" data-toggle="pill" role="tab" aria-controls="v-pills-purchase" aria-selected="false">Compra</a>
+                <a class="nav-link" data-toggle="pill" role="tab" aria-controls="v-pills-vendor" aria-selected="false">Proveedor</a>
+                <a class="nav-link" data-toggle="pill" role="tab" aria-controls="v-pills-sale" aria-selected="false">Venta</a>
+                <a class="nav-link" data-toggle="pill" role="tab" aria-controls="v-pills-customer" aria-selected="false">Cliente</a>
+                <a class="nav-link" data-toggle="pill" role="tab" aria-controls="v-pills-search" aria-selected="false">Búsqueda</a>
+                <a class="nav-link" data-toggle="pill" role="tab" aria-controls="v-pills-reports" aria-selected="false">Reportes</a>
+              </div>
+          </div>
+           <div class="col-lg-10">
+              <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="v-pills-item-tab">
+                  <div class="card card-outline-secondary my-4">
+                    <div class="card-header">Detalles de Producto</div>
+                    <div class="card-body">
+                      <ul class="nav nav-tabs" role="tablist">
+                          <li class="nav-item">
+                              <a class="nav-link active" data-toggle="tab" >Producto</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab">Subir Imagen</a>
+                          </li>
+                      </ul>
+                      <div class="tab-content">
+                          <div id="itemDetailsTab" class="container-fluid tab-pane active">
+                              <br>
+                              <div id="itemDetailsMessage"></div>
+                              <form class="row g-12">
+                                <div class="col-auto">
+                                  <div class="form-group col-md-6" style="display:inline-block">
+                                    <label for="itemDetailsItemNumber">N Producto<span class="requiredIcon">*</span></label>
+                                    <input type="text" class="form-control" name="itemDetailsItemNumber" id="itemDetailsItemNumber" autocomplete="off">
+                                    <div id="itemDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
+                                  </div>
+                                </div>
+                                 <div class="col-auto">
+                                  <div class="form-group col-md-6">
+                                    <label for="itemDetailsProductID">ID Producto</label>
+                                    <input class="form-control invTooltip" type="number" readonly="" id="itemDetailsProductID" name="itemDetailsProductID" title="" data-original-title="Este ID de producto será generado automáticamente">
+                                  </div>
+                                </div>
+                              </form>                                
+                              <div class="container textarea">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Nombre producto
+                                            </label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="exampleInputPassword1" class="form-label">Estado
+                                        </label>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                Activo
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Activo</a></li>
+                                                <li><a class="dropdown-item" href="#">Inactivo</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6" style="display:inline-block">
+                                    <!-- <label for="itemDetailsDescription">Description</label> -->
+                                    <textarea rows="4" class="form-control" placeholder="Descripción" name="itemDetailsDescription" id="itemDetailsDescription"></textarea>
+                                  </div>
+                                </div><div class="container text-center">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="floatingTextarea2">Descuento %</label>
+                                            <input type="text" class="form-control" aria-label="Username">
+                                        </div>
+                                        <div class="col">
+                                            <label for="floatingTextarea2">Cantidad</label>
+                                            <input type="number" class="form-control" aria-label="Username">
+                                        </div>
+                                        <div class="col">
+                                            <label for="floatingTextarea2">Precio Unitario*</label>
+                                            <input type="number" class="form-control" aria-label="Username">
+                                        </div>
+                                        <div class="col">
+                                            <label for="floatingTextarea2">Stock Total</label>
+                                            <input type="number" class="form-control" aria-label="Username">
+                                        </div>
+                                    </div>
+                                </div>
+<br>
+                                <button type="button" id="addItem" class="btn btn-success">Agregar Producto</button>
+                                <button type="button" id="updateItemDetailsButton" class="btn btn-primary">Actualizar</button>
+                                <button type="button" id="deleteItem" class="btn btn-danger">Borrar</button>
+                                <button type="reset" class="btn btn-light" id="itemClear">Limpiar</button>
+                              </form>
+                          </div>
+                      </div>
+                    </div> 
+                  </div>
+                </div>
+                
+   <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </table>
+  </body>
+</html>
